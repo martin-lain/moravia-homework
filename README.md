@@ -71,10 +71,9 @@ Example implementation of Xml Document serialization:
 namespace Moravia.Homework.OutputConverters.Impl
 {
     public class XmlFormatOutputConverter
-        : AbstractXmlFormatWriter<Document>, IOutputConverter, IDocumentProvider
+        : AbstractXmlFormatWriter<Document>, IOutputConverter, IDocumentProvider<Document>
     {
         public OutputTypes OutputType => OutputTypes.Xml;
-        public Type DocumentType => typeof(Document);
 
         protected override XDocument SerializeDocument(Document document)
         {
