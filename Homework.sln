@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moravia.Homework", "Moravia.Homework\Moravia.Homework.csproj", "{107529BB-1482-4232-8180-031A5583E640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moravia.Homework.Tests", "Moravia.Homework.Tests\Moravia.Homework.Tests.csproj", "{33D81A16-BCE7-48F2-A70E-2331032A0502}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{107529BB-1482-4232-8180-031A5583E640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107529BB-1482-4232-8180-031A5583E640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107529BB-1482-4232-8180-031A5583E640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107529BB-1482-4232-8180-031A5583E640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33D81A16-BCE7-48F2-A70E-2331032A0502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33D81A16-BCE7-48F2-A70E-2331032A0502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33D81A16-BCE7-48F2-A70E-2331032A0502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33D81A16-BCE7-48F2-A70E-2331032A0502}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
