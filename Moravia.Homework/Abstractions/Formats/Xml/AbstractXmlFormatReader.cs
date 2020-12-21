@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,10 +15,17 @@ namespace Moravia.Homework.Abstractions.Formats.Xml
     {
         public async Task<TDocument> ReadAsync(Stream inputStream, CancellationToken token = default)
         {
-            var document = await XDocument.LoadAsync(stream: inputStream, LoadOptions.None, token);
-            await inputStream.DisposeAsync();
+            try
+            {
+                var document = await XDocument.LoadAsync(stream: inputStream, LoadOptions.None, token);
+                await inputStream.DisposeAsync();
 
-            return ParseDocument(document);
+                return ParseDocument(document);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Source conversion error", e);
+            }
         }
         
         protected abstract TDocument ParseDocument(XDocument document);

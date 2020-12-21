@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,14 +21,29 @@ namespace Moravia.Homework.Storages
         
         public Task<Stream> ReadStreamAsync(CancellationToken token = default)
         {
-            var stream = File.Open(FileName, FileMode.Open, FileAccess.Read);
-            return Task.FromResult((Stream) stream);
+            try
+            {
+                var stream = File.Open(FileName, FileMode.Open, FileAccess.Read);
+                return Task.FromResult((Stream) stream);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("File read error", e);
+            }
         }
 
         public async Task WriteStreamAsync(Stream stream, CancellationToken token = default)
         {
-            await using var fileStream = File.Open(FileName, FileMode.OpenOrCreate, FileAccess.Write);
-            await stream.CopyToAsync(fileStream, token);
+            try
+            {
+                await using var fileStream = File.Open(FileName, FileMode.OpenOrCreate, FileAccess.Write);
+                await stream.CopyToAsync(fileStream, token);
+                await stream.DisposeAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("File write error", e);
+            }
         }
     }
 }

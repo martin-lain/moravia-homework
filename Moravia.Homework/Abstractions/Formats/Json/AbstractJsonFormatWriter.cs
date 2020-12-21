@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,14 +15,21 @@ namespace Moravia.Homework.Abstractions.Formats.Json
     {
         public async Task<Stream> WriteAsync(TDocument document, CancellationToken token = default)
         {
-            var stream = new MemoryStream();
-            var streamWriter = new StreamWriter(stream);
-            
-            await streamWriter.WriteAsync(JsonConvert.SerializeObject(document));
-            await streamWriter.FlushAsync();
+            try
+            {
+                var stream = new MemoryStream();
+                var streamWriter = new StreamWriter(stream);
 
-            stream.Position = 0;
-            return stream;
+                await streamWriter.WriteAsync(JsonConvert.SerializeObject(document));
+                await streamWriter.FlushAsync();
+
+                stream.Position = 0;
+                return stream;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Target conversion error", e);
+            }
         }
     }
 }

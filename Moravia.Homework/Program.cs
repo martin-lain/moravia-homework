@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 using System.Threading.Tasks;
 using Moravia.Homework.InputConverters.Impl;
@@ -15,25 +17,34 @@ namespace Moravia.Homework
             {
                 Console.WriteLine("Usage:");
                 Console.WriteLine("homework input.xml output.json");
+                return;
             }
-            
+
             var tokenSource = new CancellationTokenSource();
             var token = tokenSource.Token;
 
-            var sourceFileName = args[0];
-            var targetFileName = args[1];
-            
-            var sourceStorage = new FileStorage(sourceFileName);
-            var inputStream = await sourceStorage.ReadStreamAsync(token);
-            
-            var inputConverter = new XmlFormatInputConverter();
-            var document = await inputConverter.ReadAsync(inputStream, token);
+            try
+            {
+                var sourceFileName = args[0];
+                var targetFileName = args[1];
 
-            var outputConverter = new JsonFormatOutputConverter();
-            var outputStream  = await outputConverter.WriteAsync(document, token);
+                var sourceStorage = new FileStorage(sourceFileName);
+                var inputStream = await sourceStorage.ReadStreamAsync(token);
 
-            var destinationStorage = new FileStorage(targetFileName);
-            await destinationStorage.WriteStreamAsync(outputStream, token);
+                var inputConverter = new XmlFormatInputConverter();
+                var document = await inputConverter.ReadAsync(inputStream, token);
+
+                var outputConverter = new JsonFormatOutputConverter();
+                var outputStream = await outputConverter.WriteAsync(document, token);
+
+                var destinationStorage = new FileStorage(targetFileName);
+                await destinationStorage.WriteStreamAsync(outputStream, token);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+                Console.WriteLine($"Conversion has failed. {e.InnerException?.Message}");
+            }
         }
     }
     
