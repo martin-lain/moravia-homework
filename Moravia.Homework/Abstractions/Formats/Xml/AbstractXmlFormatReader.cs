@@ -5,6 +5,10 @@ using System.Xml.Linq;
 
 namespace Moravia.Homework.Abstractions.Formats.Xml
 {
+    /// <summary>
+    /// Abstract XML deserializer
+    /// </summary>
+    /// <typeparam name="TDocument"></typeparam>
     public abstract class AbstractXmlFormatReader<TDocument>
         : IFormatReader<TDocument>
     {

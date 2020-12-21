@@ -5,6 +5,10 @@ using Newtonsoft.Json;
 
 namespace Moravia.Homework.Abstractions.Formats.Json
 {
+    /// <summary>
+    /// Abstract JSON serializer
+    /// </summary>
+    /// <typeparam name="TDocument"></typeparam>
     public abstract class AbstractJsonFormatWriter<TDocument>
         : IFormatWriter<TDocument>
     {

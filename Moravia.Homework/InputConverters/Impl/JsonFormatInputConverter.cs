@@ -5,10 +5,12 @@ using Moravia.Homework.Model;
 
 namespace Moravia.Homework.InputConverters.Impl
 {
+    /// <summary>
+    /// Implementation of deserializing Document from JSON
+    /// </summary>
     public class JsonFormatInputConverter
-        : AbstractJsonFormatReader<Document>, IInputConverter, IDocumentProvider
+        : AbstractJsonFormatReader<Document>, IInputConverter, IDocumentProvider<Document>
     {
         public InputTypes InputType => InputTypes.Json;
-        public Type DocumentType => typeof(Document);
     }
 }

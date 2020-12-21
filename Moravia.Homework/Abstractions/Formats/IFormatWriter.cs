@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 namespace Moravia.Homework.Abstractions.Formats
 {
     /// <summary>
-    /// General document deserialization interface
+    /// General document serialization interface
     /// </summary>
     /// <typeparam name="TDocument">General document type</typeparam>
-    public interface IFormatReader<TDocument>
+    public interface IFormatWriter<in TDocument>
     {
-        Task<TDocument> ReadAsync(Stream inputStream, CancellationToken token = default);
+        Task<Stream> WriteAsync(TDocument document, CancellationToken token = default);
     }
 }

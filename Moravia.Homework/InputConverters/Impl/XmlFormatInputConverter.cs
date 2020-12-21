@@ -6,11 +6,13 @@ using Moravia.Homework.Model;
 
 namespace Moravia.Homework.InputConverters.Impl
 {
+    /// <summary>
+    /// Implementation of deserializing Document from XML
+    /// </summary>
     public class XmlFormatInputConverter
-        : AbstractXmlFormatReader<Document>, IInputConverter, IDocumentProvider
+        : AbstractXmlFormatReader<Document>, IInputConverter, IDocumentProvider<Document>
     {
         public InputTypes InputType => InputTypes.Xml;
-        public Type DocumentType => typeof(Document);
 
         protected override Document ParseDocument(XDocument document)
         {

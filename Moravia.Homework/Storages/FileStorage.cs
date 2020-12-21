@@ -5,6 +5,9 @@ using Moravia.Homework.Abstractions.Storages;
 
 namespace Moravia.Homework.Storages
 {
+    /// <summary>
+    /// Implementation of file system r/w storage
+    /// </summary>
     public class FileStorage
         : IStorageReader, IStorageWriter
     {
@@ -26,6 +29,5 @@ namespace Moravia.Homework.Storages
             await using var fileStream = File.Open(FileName, FileMode.OpenOrCreate, FileAccess.Write);
             await stream.CopyToAsync(fileStream, token);
         }
-
     }
 }

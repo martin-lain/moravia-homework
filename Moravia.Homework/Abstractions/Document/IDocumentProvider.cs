@@ -2,8 +2,12 @@ using System;
 
 namespace Moravia.Homework.Abstractions.Document
 {
-    public interface IDocumentProvider
+    /// <summary>
+    /// Document marker interface
+    /// </summary>
+    /// <typeparam name="TDocument"></typeparam>
+    public interface IDocumentProvider<TDocument>
     {
-        public Type DocumentType { get; }
+        public Type DocumentType => typeof(TDocument);
     }
 }

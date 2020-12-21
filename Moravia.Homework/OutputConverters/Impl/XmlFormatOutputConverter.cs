@@ -6,12 +6,14 @@ using Moravia.Homework.Model;
 
 namespace Moravia.Homework.OutputConverters.Impl
 {
+    /// <summary>
+    /// Implementation of serializing Document to XML
+    /// </summary>
     public class XmlFormatOutputConverter
-        : AbstractXmlFormatWriter<Document>, IOutputConverter, IDocumentProvider
+        : AbstractXmlFormatWriter<Document>, IOutputConverter, IDocumentProvider<Document>
     {
         public OutputTypes OutputType => OutputTypes.Xml;
-        public Type DocumentType => typeof(Document);
-
+        
         protected override XDocument SerializeDocument(Document document)
         {
             var outputDocument = new XDocument();
